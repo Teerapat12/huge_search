@@ -8,7 +8,7 @@
 
 ### Approach
 
-Scan through the file and add all the elements to min Heap of Size N.
+Scan through the file and add all the elements to a min-heap with size N.
 Do another scan to print all the element with value in the Heap.
 
 ```
