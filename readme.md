@@ -1,7 +1,7 @@
-## Top N search from huge list
+## Top N search from a huge list
 
 
-> Given a file with two columns, uuid and a value (assuming valuees to be integers).
+> Given a file with two columns, uuid and a number (assuming values to be integers).
 > 
 > Print uuid with top N values to stdout
 
