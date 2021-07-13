@@ -1,9 +1,9 @@
 ## Top N search from huge list
 
 
-> Given a file with two columns, uuid and a value (assuming value is an integer.
+> Given a file with two columns, uuid and a value (assuming valuees to be integers).
 > 
-> Print uuid with top N values to stoud
+> Print uuid with top N values to stdout
 
 
 #### Data Generator
