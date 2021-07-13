@@ -40,4 +40,11 @@ To get the uuids with top N values, use
 
 #### Sample
 
+##### Rows = 50M (2GB)
+
 ![img.png](img.png)
+
+
+##### Rows = 500M (20GB)
+
+![img_2.png](img_2.png)
