@@ -1,5 +1,7 @@
 import sys
 
+from dict_storage import DictStorage
+
 
 class MinHeap:
 
@@ -10,7 +12,7 @@ class MinHeap:
         self.Heap = [sys.maxsize] * (maxsize + 1)
         self.Heap[0] = -sys.maxsize
         self.top = 1
-        self.elements = set()
+        self.elements = DictStorage()
 
     def parent(self, pos):
         return pos // 2
@@ -18,8 +20,8 @@ class MinHeap:
     def swap(self, pos1, pos2):
         self.Heap[pos1], self.Heap[pos2] = self.Heap[pos2], self.Heap[pos1]
 
-    def add(self, element):
-        if element in self.elements or (element < self.Heap[1] and self.size == self.maxsize):
+    def add(self, element, uuid):
+        if self.elements.contains(element) or (element < self.Heap[1] and self.size == self.maxsize):
             return
 
         if self.size == self.maxsize:
@@ -33,7 +35,7 @@ class MinHeap:
             self.swap(current, self.parent(current))
             current = self.parent(current)
 
-        self.elements.add(element)
+        self.elements.add(element, uuid)
 
     def isNotCorrectNode(self, current):
         has_left_child = self.get_left_child(current) is not None and self.Heap[current] > self.Heap[
@@ -81,7 +83,7 @@ class MinHeap:
         return right_child_index
 
     def is_element_in_heap(self, element):
-        return element in self.elements
+        return self.elements.contains(element)
 
     def __str__(self):
         return str(self.Heap[1:])

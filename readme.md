@@ -9,7 +9,7 @@
 ### Approach
 
 Scan through the file and add all the elements to a min-heap with size N.
-Do another scan to print all the element with value in the Heap.
+Meanwhile, add the value and uuid to a dictionary to do a one scan through.
 
 ```
 Big-O

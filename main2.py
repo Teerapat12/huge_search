@@ -2,6 +2,7 @@ import click
 from minheap import MinHeap
 import time
 
+
 @click.command()
 @click.option('--file_path', help='File path')
 @click.option('--n', default=10, help='Top n values to get uuid')
@@ -19,18 +20,7 @@ def get_top_n(file_path, n):
         heap.add(int(row[1]), row[0])
         row_count += 1
 
-    row_count = 0
-    occurrences = 0
-    data = open(file_path, "r")
-    while True:
-        line = data.readline()
-        if not line:
-            break
-        row = line.split(",")
-        if heap.is_element_in_heap(int(row[1])):
-            print(row[0], row[1], end="")
-            occurrences += 1
-        row_count += 1
+    occurrences = heap.elements.print_values()
 
     print("============================================================")
     print(f"Top {n} values  : {heap}")
