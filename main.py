@@ -27,19 +27,19 @@ def get_top_n(file_path, n):
         if not line:
             break
         row = line.split(",")
-        if heap.elementInHeap(int(row[1])):
+        if heap.is_element_in_heap(int(row[1])):
             print(row[0], row[1], end="")
             occurences += 1
         row_count += 1
 
     print("============================================================")
-    print(f"Top {n} values  : {heap.Heap[1:]}")
+    print(f"Top {n} values  : {heap}")
     print(f"Total rows      : {row_count}")
     print(f"Matched rows    : {occurences}")
     print(f"Matched percent : {100 * occurences / row_count} %")
     print(f"Time took       : {time.time() - start} seconds")
     print("============================================================")
-    return heap.Heap[1:]
+    return True
 
 
 if __name__ == '__main__':

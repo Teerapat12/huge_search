@@ -80,7 +80,7 @@ class MinHeap:
             return None
         return right_child_index
 
-    def elementInHeap(self, element):
+    def is_element_in_heap(self, element):
         return element in self.elements
 
     def __str__(self):
