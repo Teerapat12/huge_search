@@ -11,7 +11,9 @@ class DictStorage:
             self.elements[key] = [value]
 
     def remove(self, key):
+        values = self.elements[key]
         del self.elements[key]
+        return values
 
     def contains(self, key):
         return key in self.elements

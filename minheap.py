@@ -67,8 +67,8 @@ class MinHeap:
                     self.swap(current, self.get_right_child(current))
                     current = self.get_right_child(current)
 
-        self.elements.remove(return_value)
-        return return_value
+        uuid = self.elements.remove(return_value)
+        return return_value, uuid
 
     def get_left_child(self, pos):
         left_child_index = 2 * pos
@@ -84,6 +84,11 @@ class MinHeap:
 
     def is_element_in_heap(self, element):
         return self.elements.contains(element)
+
+    def combine(self, another_heap):
+        while another_heap.size > 0:
+            value, uuid = another_heap.pop()
+            self.add(value, uuid)
 
     def __str__(self):
         return str(self.Heap[1:])
