@@ -48,3 +48,19 @@ To get the uuids with top N values, use
 ##### Rows = 500M (20GB)
 
 ![img_2.png](img_2.png)
+a
+
+---
+
+#### One scan
+
+```
+Time took       : 76.49568700790405 seconds
+```
+
+#### Two Scan
+
+```
+Time took       : 131.64584374427795 seconds
+
+```
