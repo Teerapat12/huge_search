@@ -11,7 +11,7 @@ def gen_data(count, file_path):
     start = time.time()
     f = open(file_path, "w")
     for i in range(count):
-        f.write(f"{uuid.uuid4()},{random.randint(0, count)}\n")
+        f.write(f"{uuid.uuid4()},{random.randint(0, int(count * 0.5) )}\n")
 
     print(f"File created at : {file_path}")
     print(f"Time took       : {time.time() - start} seconds")

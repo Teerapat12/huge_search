@@ -21,7 +21,8 @@ class DictStorage:
     def print_values(self):
         occurrences = 0
         for e in self.elements:
-            for uuid in self.elements[e]:
+            uuids = self.elements[e]
+            for uuid in uuids:
                 print(uuid, e)
                 occurrences += 1
 

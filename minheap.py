@@ -13,6 +13,7 @@ class MinHeap:
         self.Heap[0] = -sys.maxsize
         self.top = 1
         self.elements = DictStorage()
+        self.counter = 0
 
     def parent(self, pos):
         return pos // 2
@@ -21,7 +22,13 @@ class MinHeap:
         self.Heap[pos1], self.Heap[pos2] = self.Heap[pos2], self.Heap[pos1]
 
     def add(self, element, uuid):
-        if self.elements.contains(element) or (element < self.Heap[1] and self.size == self.maxsize):
+        self.counter += 1
+
+        if self.elements.contains(element):
+            self.elements.add(element, uuid)
+            return
+
+        if element < self.Heap[1] and self.size == self.maxsize:
             return
 
         if self.size == self.maxsize:
@@ -87,8 +94,11 @@ class MinHeap:
 
     def combine(self, another_heap):
         while another_heap.size > 0:
-            value, uuid = another_heap.pop()
-            self.add(value, uuid)
+            value, uuids = another_heap.pop()
+
+            for uuid in uuids:
+                self.add(value, uuid)
+        self.counter += another_heap.counter
 
     def __str__(self):
         return str(self.Heap[1:])
