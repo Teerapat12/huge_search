@@ -51,9 +51,9 @@ def get_top_n(file_path, n):
 
     print("============================================================")
     print(f"Top {n} values  : {heap}")
-    # print(f"Total rows      : {row_number}")
+    print(f"Total rows      : {row_number}")
     print(f"Matched rows    : {occurrences}")
-    # print(f"Matched percent : {100 * occurrences / row_number} %")
+    print(f"Matched percent : {100 * occurrences / row_number} %")
     print(f"Time took       : {time.time() - start} seconds")
     print("============================================================")
     return True
