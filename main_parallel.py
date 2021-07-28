@@ -6,23 +6,29 @@ import time
 # import multiprocessing as mp
 import multiprocess as mp
 
-cores = 4
+cores = 8
 pool = mp.Pool(cores)
 
 
-def process_wrapper(chunk_start, chunk_end, n, f):
-    heap = MinHeap(n)
-    f.seek(chunk_start)
+def process_wrapper(chunk_start, chunk_end, n, file_path):
 
-    line = "START"
-    if chunk_start != 0:
-        line = f.readline()  # Discard the partial line
+    with open(file_path, 'rb') as f:
+        start = time.time()
+        heap = MinHeap(n)
+        f.seek(chunk_start)
+        print("Starting", chunk_start, chunk_end)
 
-    while line and line != '' and f.tell() < chunk_end:
-        line = f.readline()
-        row = str(line).split(",")
-        val = int(row[1][:-3])
-        heap.add(val, row[0])
+        line = "START"
+        if chunk_start != 0:
+            line = f.readline()  # Discard the partial line
+
+        while line and line != '' and f.tell() < chunk_end:
+            line = f.readline()
+            row = str(line).split(",")
+            val = int(row[1][:-3])
+            heap.add(val, row[0])
+
+    print(f"Job {n}: {time.time() - start} s")
 
     return heap
 
@@ -37,9 +43,8 @@ def get_top_n(file_path, n):
     size = os.path.getsize(file_path)
     chunk_size = size // cores
 
-    with open(file_path, 'rb') as f:
-        jobs = [(i * chunk_size, (i + 1) * chunk_size, n, f) for i in range(cores)]
-        heaps = pool.starmap(process_wrapper, jobs)
+    jobs = [(i * chunk_size, (i + 1) * chunk_size, n, file_path) for i in range(cores)]
+    heaps = pool.starmap(process_wrapper, jobs)
 
     # wait for all jobs to finish
     heap = heaps[0]
